@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="theme-color" content="#FF7B31">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Redirecting to fasfood.online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .redirect-box {
+            text-align: center;
+            padding: 32px 24px;
+        }
+
+        .emoji {
+            font-size: 56px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .message {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1e1e2f;
+            margin-bottom: 12px;
+        }
+
+        .destination {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f0572d;
+            margin-bottom: 16px;
+        }
+
+        .countdown {
+            font-size: 32px;
+            font-weight: 700;
+            color: #f0572d;
+            margin: 16px 0;
+        }
+
+        .redirect-link {
+            font-size: 13px;
+            color: #999;
+            margin-top: 24px;
+        }
+
+        .redirect-link a {
+            color: #f0572d;
+            text-decoration: none;
+        }
+
+        .redirect-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="redirect-box">
+    <div class="emoji">↻</div>
+    <div class="message">Taking you to ..</div>
+    <div class="destination">fasfood.online</div>
+    <div class="countdown" id="timerDisplay">3</div>
+    <div class="redirect-link">
+        <a href="#" id="directLink">Click here if nothing happens</a>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const TARGET_URL = "https://fasfood.online";
+        
+        let secondsLeft = 3;
+        const timerElement = document.getElementById('timerDisplay');
+        const directLink = document.getElementById('directLink');
+        
+        if (directLink) {
+            directLink.href = TARGET_URL;
+        }
+        
+        const interval = setInterval(function() {
+            secondsLeft--;
+            
+            if (timerElement) {
+                timerElement.textContent = secondsLeft;
+            }
+            
+            if (secondsLeft <= 0) {
+                clearInterval(interval);
+                window.location.href = TARGET_URL;
+            }
+        }, 1000);
+    })();
+</script>
+</body>
+</html>
